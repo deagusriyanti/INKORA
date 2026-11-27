@@ -1,0 +1,1224 @@
+:root {
+    --inkora-bg: #f3f5f7;
+    --inkora-surface: #ffffff;
+    --inkora-lime: #c9f363;
+    --inkora-lime-hover: #bce850;
+    --inkora-dark: #14171f;
+    --inkora-muted: #7c8495;
+    --inkora-lavender: #d5c8f8;
+    --inkora-blue: #bbd0f9;
+    --inkora-mint: #a7e6c3;
+    --inkora-teal: #1f7a85;
+}
+
+body {
+    background-color: var(--inkora-bg);
+    font-family:
+        "Plus Jakarta Sans",
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+    color: var(--inkora-dark);
+    margin: 0;
+}
+
+/* =========================================
+   LAYOUT UTAMA & SIDEBAR TERKUNCI (DESKTOP)
+   ========================================= */
+@media (min-width: 992px) {
+    html,
+    body.app-body {
+        height: 100%;
+        overflow: hidden;
+    }
+    .app-shell {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .inkora-sidebar {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .inkora-main-area {
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+.inkora-sidebar {
+    width: 255px;
+    min-height: 100vh;
+    background: var(--inkora-surface);
+    padding: 1.15rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.25s ease;
+}
+
+.inkora-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0 0.6rem 0.85rem;
+    text-decoration: none;
+    color: var(--inkora-dark);
+}
+
+.inkora-brand-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.inkora-brand-icon {
+    width: 34px;
+    height: 34px;
+    background: var(--inkora-dark);
+    color: var(--inkora-lime);
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.inkora-nav .nav-link {
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding: 0.48rem 0.85rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.12rem;
+    transition: all 0.2s ease;
+}
+
+.inkora-nav .nav-link:hover {
+    background: #f3f5f7;
+    color: var(--inkora-dark);
+}
+
+.inkora-nav .nav-link.active {
+    background: var(--inkora-lime);
+    color: var(--inkora-dark);
+    font-weight: 700;
+}
+
+.inkora-nav-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #9ca3af;
+    font-weight: 700;
+    padding: 0.55rem 0.85rem 0.2rem;
+}
+
+.sidebar-footer {
+    padding-top: 0.85rem;
+    border-top: 1px solid #f1f3f5;
+}
+
+.btn-sidebar-logout {
+    width: 100%;
+    padding: 0.55rem 0.9rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+    color: var(--inkora-dark);
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    transition: 0.2s ease;
+}
+
+.btn-sidebar-logout:hover {
+    background: #fee2e2;
+    border-color: #fecaca;
+    color: #dc2626;
+}
+
+/* =========================================
+   TOPBAR, AVATAR & KOMPONEN GLOBAL
+   ========================================= */
+.inkora-topbar {
+    padding: 1.35rem 2rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-heading {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0;
+}
+
+.icon-circle-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: var(--inkora-surface);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--inkora-dark);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.icon-circle-btn:hover {
+    background: var(--inkora-lime);
+    color: var(--inkora-dark);
+}
+
+.topbar-user-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--inkora-surface);
+    padding: 0.5rem 0.9rem;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.topbar-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--inkora-dark);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.avatar-circle-sm {
+    width: 36px;
+    height: 36px;
+}
+
+.avatar-circle-md {
+    width: 38px;
+    height: 38px;
+}
+
+.avatar-circle-lg {
+    width: 56px;
+    height: 56px;
+}
+
+.card {
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03) !important;
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+    padding: 1.1rem 1.35rem !important;
+}
+
+.btn-lime {
+    background-color: var(--inkora-lime);
+    color: var(--inkora-dark);
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 0.45rem 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-lime:hover {
+    background-color: var(--inkora-lime-hover);
+    color: var(--inkora-dark);
+}
+
+.btn-primary {
+    background-color: var(--inkora-dark) !important;
+    border-color: var(--inkora-dark) !important;
+    border-radius: 12px !important;
+}
+
+.table > :not(caption) > * > * {
+    border-bottom-color: #f1f5f9;
+    padding: 0.85rem 0.75rem;
+}
+
+/* =========================================
+   DASHBOARD CARDS & WIDGETS
+   ========================================= */
+.stat-pastel-card {
+    border-radius: 22px;
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.stat-pastel-card:hover {
+    transform: translateY(-3px);
+}
+
+.bg-pastel-lavender {
+    background-color: var(--inkora-lavender);
+}
+.bg-pastel-blue {
+    background-color: var(--inkora-blue);
+}
+.bg-pastel-mint {
+    background-color: var(--inkora-mint);
+}
+
+.stat-value {
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+}
+
+.stat-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--inkora-dark);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.teal-edition-card {
+    background: linear-gradient(145deg, #1f7a85 0%, #165e67 100%);
+    color: #ffffff;
+    border-radius: 22px;
+    padding: 1.65rem;
+}
+
+.analysis-pill {
+    background: #f8fafc;
+    border: 1px solid #eef2f6;
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--inkora-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.analysis-pill:hover {
+    background: var(--inkora-lime);
+    color: var(--inkora-dark);
+}
+
+.customer-row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 0.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--inkora-dark);
+    transition: 0.15s;
+}
+
+.customer-row-item:hover {
+    background: #f8fafc;
+}
+
+.chart-wrapper {
+    height: 215px;
+    position: relative;
+}
+
+/* =========================================
+   HALAMAN AUTH (LOGIN / LUPA PASSWORD)
+   ========================================= */
+body.guest-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 960px;
+    background: var(--inkora-surface);
+    border-radius: 28px;
+    box-shadow: 0 20px 45px rgba(20, 23, 31, 0.06);
+    overflow: hidden;
+}
+
+.auth-brand-panel {
+    background: linear-gradient(155deg, #1f7a85 0%, #144d54 100%);
+    color: #ffffff;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.auth-brand-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--inkora-dark);
+    color: var(--inkora-lime);
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.auth-highlight-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 1.25rem;
+    backdrop-filter: blur(6px);
+}
+
+.auth-form-panel {
+    padding: 3rem 2.75rem;
+}
+
+.auth-heading {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.auth-link-teal {
+    color: var(--inkora-teal);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-link-teal:hover {
+    text-decoration: underline;
+}
+
+.auth-form-panel .form-control {
+    border-radius: 14px;
+    padding: 0.72rem 1rem;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    font-size: 0.94rem;
+}
+
+.auth-form-panel .form-control:focus {
+    background-color: #ffffff;
+    border-color: var(--inkora-dark);
+    box-shadow: 0 0 0 0.2rem rgba(201, 243, 99, 0.45);
+}
+
+.auth-form-panel .input-group .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-toggle-pass {
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    border: 1px solid #e2e8f0;
+    border-left: none;
+    background-color: #f8fafc;
+    color: #64748b;
+    padding: 0 1rem;
+}
+
+.btn-inkora-lime {
+    background-color: var(--inkora-lime);
+    color: var(--inkora-dark);
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    padding: 0.78rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.btn-inkora-lime:hover {
+    background-color: var(--inkora-lime-hover);
+    color: var(--inkora-dark);
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   RESPONSIVE MOBILE
+   ========================================= */
+@media (max-width: 991.98px) {
+    .inkora-sidebar {
+        position: fixed;
+        left: -265px;
+        top: 0;
+        bottom: 0;
+        z-index: 1050;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    .inkora-sidebar.show {
+        left: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .auth-form-panel {
+        padding: 2.25rem 1.5rem;
+    }
+}
+
+:root {
+    --inkora-bg: #f5f7f9;
+    --inkora-surface: #ffffff;
+    --inkora-lime: #c9f363;
+    --inkora-lime-hover: #bce850;
+    --inkora-dark: #181b23;
+    --inkora-text: #272b36;
+    --inkora-muted: #6e7687;
+    --inkora-border: #eceff3;
+    --inkora-lavender: #dcd2fa;
+    --inkora-blue: #c8dafc;
+    --inkora-mint: #b7ecd0;
+    --inkora-teal: #1f7a85;
+}
+
+/* =========================================
+   TIPOGRAFI MODERN & MINIMALIS (GLOBAL)
+   ========================================= */
+body {
+    background-color: var(--inkora-bg);
+    font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    color: var(--inkora-text);
+    font-size: 0.915rem;
+    line-height: 1.6;
+    letter-spacing: -0.006em;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    color: var(--inkora-dark);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+}
+
+/* Memperhalus bobot teks tebal Bootstrap di seluruh halaman */
+.fw-bold {
+    font-weight: 600 !important;
+}
+
+.fw-semibold {
+    font-weight: 500 !important;
+}
+
+.small,
+small {
+    font-size: 0.815rem;
+    line-height: 1.5;
+}
+
+.text-muted {
+    color: var(--inkora-muted) !important;
+}
+
+/* =========================================
+   LAYOUT UTAMA & SIDEBAR TERKUNCI (DESKTOP)
+   ========================================= */
+@media (min-width: 992px) {
+    html,
+    body.app-body {
+        height: 100%;
+        overflow: hidden;
+    }
+    .app-shell {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .inkora-sidebar {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .inkora-main-area {
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+.inkora-sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: var(--inkora-surface);
+    padding: 1.25rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--inkora-border);
+    transition: all 0.25s ease;
+}
+
+.inkora-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.15rem 0.65rem 1rem;
+    text-decoration: none;
+    color: var(--inkora-dark);
+}
+
+.inkora-brand-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.inkora-brand-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--inkora-dark);
+    color: var(--inkora-lime);
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.inkora-nav .nav-link {
+    color: #525b6d;
+    font-weight: 450;
+    font-size: 0.86rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.15rem;
+    transition: all 0.18s ease;
+}
+
+.inkora-nav .nav-link i {
+    font-size: 0.98rem;
+    opacity: 0.82;
+}
+
+.inkora-nav .nav-link:hover {
+    background: #f4f6f9;
+    color: var(--inkora-dark);
+}
+
+.inkora-nav .nav-link.active {
+    background: var(--inkora-lime);
+    color: var(--inkora-dark);
+    font-weight: 600;
+}
+
+.inkora-nav .nav-link.active i {
+    opacity: 1;
+}
+
+.inkora-nav-label {
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #9aa2b1;
+    font-weight: 600;
+    padding: 0.7rem 0.9rem 0.25rem;
+}
+
+.sidebar-footer {
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--inkora-border);
+}
+
+.btn-sidebar-logout {
+    width: 100%;
+    padding: 0.55rem 0.9rem;
+    border-radius: 12px;
+    border: 1px solid var(--inkora-border);
+    background: #f8fafc;
+    color: var(--inkora-text);
+    font-weight: 500;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    transition: all 0.2s ease;
+}
+
+.btn-sidebar-logout:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+}
+
+/* =========================================
+   TOPBAR, AVATAR & KOMPONEN GLOBAL
+   ========================================= */
+.inkora-topbar {
+    padding: 1.5rem 2.25rem 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.inkora-main-area main {
+    padding: 1rem 2.25rem 2.5rem !important;
+}
+
+.page-heading {
+    font-size: 1.45rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.15rem;
+}
+
+.icon-circle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+    background: var(--inkora-surface);
+    border: 1px solid var(--inkora-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--inkora-dark);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.icon-circle-btn:hover {
+    background: var(--inkora-lime);
+    border-color: var(--inkora-lime);
+    color: var(--inkora-dark);
+}
+
+.topbar-user-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--inkora-surface);
+    padding: 0.45rem 0.95rem;
+    border-radius: 14px;
+    border: 1px solid var(--inkora-border);
+}
+
+.topbar-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--inkora-dark);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.76rem;
+}
+
+.avatar-circle-sm {
+    width: 36px;
+    height: 36px;
+}
+
+.avatar-circle-md {
+    width: 38px;
+    height: 38px;
+}
+
+.avatar-circle-lg {
+    width: 56px;
+    height: 56px;
+}
+
+.card {
+    border: 1px solid rgba(236, 239, 243, 0.85) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 2px 14px rgba(15, 23, 42, 0.025) !important;
+}
+
+.card-body.p-4 {
+    padding: 1.5rem !important;
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--inkora-border) !important;
+    padding: 1.2rem 1.5rem !important;
+}
+
+.btn {
+    font-size: 0.86rem;
+    letter-spacing: -0.005em;
+}
+
+.btn-lime {
+    background-color: var(--inkora-lime);
+    color: var(--inkora-dark);
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 0.5rem 1.1rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-lime:hover {
+    background-color: var(--inkora-lime-hover);
+    color: var(--inkora-dark);
+}
+
+.btn-primary,
+.btn-dark {
+    background-color: var(--inkora-dark) !important;
+    border-color: var(--inkora-dark) !important;
+    border-radius: 12px !important;
+    font-weight: 500;
+}
+
+/* Form Input Lebih Lega & Minimalis */
+.form-label {
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--inkora-dark);
+    margin-bottom: 0.45rem;
+}
+
+.form-control,
+.form-select {
+    font-size: 0.89rem;
+    padding: 0.62rem 0.9rem;
+    border-color: #e2e7ee;
+    color: var(--inkora-dark);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--inkora-dark);
+    box-shadow: 0 0 0 0.2rem rgba(201, 243, 99, 0.35);
+}
+
+/* Tabel Lebih Lapang */
+.table thead th {
+    font-size: 0.76rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--inkora-muted);
+    border-bottom: 1px solid var(--inkora-border);
+    padding: 0.8rem 0.85rem;
+}
+
+.table > :not(caption) > * > * {
+    border-bottom-color: #f3f5f8;
+    padding: 0.95rem 0.85rem;
+    font-size: 0.885rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.badge {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: 0.42em 0.85em;
+}
+
+/* =========================================
+   DASHBOARD CARDS & WIDGETS
+   ========================================= */
+.stat-pastel-card {
+    border-radius: 20px;
+    padding: 1.55rem 1.35rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.stat-pastel-card:hover {
+    transform: translateY(-2px);
+}
+
+.bg-pastel-lavender {
+    background-color: var(--inkora-lavender);
+}
+.bg-pastel-blue {
+    background-color: var(--inkora-blue);
+}
+.bg-pastel-mint {
+    background-color: var(--inkora-mint);
+}
+
+.stat-value {
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    font-variant-numeric: tabular-nums;
+    margin: 0.3rem 0 0.35rem;
+}
+
+.stat-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--inkora-dark);
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.teal-edition-card {
+    background: linear-gradient(145deg, #1f7a85 0%, #165e67 100%);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 1.75rem;
+}
+
+.teal-edition-card h3 {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.analysis-pill {
+    background: #f8fafc;
+    border: 1px solid var(--inkora-border);
+    border-radius: 13px;
+    padding: 0.9rem 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--inkora-dark);
+    font-weight: 500;
+    font-size: 0.865rem;
+    transition: 0.2s;
+}
+
+.analysis-pill:hover {
+    background: var(--inkora-lime);
+    border-color: var(--inkora-lime);
+    color: var(--inkora-dark);
+}
+
+.customer-row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 0.6rem;
+    border-radius: 13px;
+    text-decoration: none;
+    color: var(--inkora-dark);
+    transition: 0.15s;
+}
+
+.customer-row-item:hover {
+    background: #f8fafc;
+}
+
+.chart-wrapper {
+    height: 215px;
+    position: relative;
+}
+
+/* =========================================
+   HALAMAN AUTH (LOGIN / LUPA PASSWORD)
+   ========================================= */
+body.guest-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 960px;
+    background: var(--inkora-surface);
+    border-radius: 26px;
+    box-shadow: 0 20px 45px rgba(20, 23, 31, 0.05);
+    overflow: hidden;
+}
+
+.auth-brand-panel {
+    background: linear-gradient(155deg, #1f7a85 0%, #144d54 100%);
+    color: #ffffff;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.auth-brand-panel h3 {
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.auth-brand-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--inkora-dark);
+    color: var(--inkora-lime);
+    border-radius: 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+}
+
+.auth-highlight-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 1.25rem;
+    backdrop-filter: blur(6px);
+}
+
+.auth-form-panel {
+    padding: 3.25rem 3rem;
+}
+
+.auth-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.35rem;
+}
+
+.auth-link-teal {
+    color: var(--inkora-teal);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.auth-link-teal:hover {
+    text-decoration: underline;
+}
+
+.auth-form-panel .form-control {
+    border-radius: 13px;
+    padding: 0.72rem 1rem;
+    border: 1px solid #e2e7ee;
+    background-color: #f8fafc;
+    font-size: 0.9rem;
+}
+
+.auth-form-panel .form-control:focus {
+    background-color: #ffffff;
+    border-color: var(--inkora-dark);
+    box-shadow: 0 0 0 0.2rem rgba(201, 243, 99, 0.4);
+}
+
+.auth-form-panel .input-group .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-toggle-pass {
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    border: 1px solid #e2e7ee;
+    border-left: none;
+    background-color: #f8fafc;
+    color: #6e7687;
+    padding: 0 1rem;
+}
+
+.btn-inkora-lime {
+    background-color: var(--inkora-lime);
+    color: var(--inkora-dark);
+    font-weight: 600;
+    border: none;
+    border-radius: 13px;
+    padding: 0.78rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.btn-inkora-lime:hover {
+    background-color: var(--inkora-lime-hover);
+    color: var(--inkora-dark);
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   RESPONSIVE MOBILE
+   ========================================= */
+@media (max-width: 991.98px) {
+    .inkora-sidebar {
+        position: fixed;
+        left: -265px;
+        top: 0;
+        bottom: 0;
+        z-index: 1050;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    .inkora-sidebar.show {
+        left: 0;
+    }
+    .inkora-topbar,
+    .inkora-main-area main {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .auth-form-panel {
+        padding: 2.25rem 1.5rem;
+    }
+}
+
+/* =========================================
+   DASHBOARD INTERAKTIF & MICRO-INTERACTIONS
+   ========================================= */
+.stat-pastel-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(24, 27, 35, 0.04);
+    transition:
+        transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.22s ease;
+}
+
+.stat-pastel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(24, 27, 35, 0.06);
+}
+
+.stat-icon-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.65);
+    color: var(--inkora-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.collection-progress-track {
+    height: 6px;
+    background: rgba(24, 27, 35, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.65rem;
+}
+
+.collection-progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--inkora-dark);
+    border-radius: 999px;
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Filter Pill Tabs (Grafik & Tabel) */
+.inkora-filter-group {
+    display: inline-flex;
+    background: #f1f4f8;
+    padding: 0.25rem;
+    border-radius: 12px;
+    gap: 0.2rem;
+}
+
+.inkora-filter-btn {
+    border: none;
+    background: transparent;
+    color: var(--inkora-muted);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.32rem 0.75rem;
+    border-radius: 9px;
+    transition: all 0.18s ease;
+    cursor: pointer;
+}
+
+.inkora-filter-btn:hover {
+    color: var(--inkora-dark);
+}
+
+.inkora-filter-btn.active {
+    background: var(--inkora-surface);
+    color: var(--inkora-dark);
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
+}
+
+/* Live Status Pulse Indicator */
+.live-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--inkora-lime);
+    display: inline-block;
+    margin-right: 0.45rem;
+    box-shadow: 0 0 0 0 rgba(201, 243, 99, 0.7);
+    animation: inkoraPulse 2s infinite;
+}
+
+@keyframes inkoraPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(201, 243, 99, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 7px rgba(201, 243, 99, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(201, 243, 99, 0);
+    }
+}
+
+.analysis-pill {
+    transition:
+        transform 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.analysis-pill:hover {
+    transform: translateX(3px);
+}
+
+.customer-row-item {
+    transition:
+        transform 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.customer-row-item:hover {
+    transform: translateX(3px);
+}
